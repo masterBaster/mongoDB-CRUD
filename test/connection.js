@@ -1,10 +1,17 @@
 let moongose = require('mongoose');
 
-moongose.connect('mongodb://localhost/testaroo');
+//ES6 Promises
+moongose.Promise = global.Promise;
 
-//once is something like on('click', ) in jquery
-moongose.connection.once('open', function(){
-    console.log('connection has been made...')
-}).on('error', function(error){
-    console.log('connection error:', error);
-})
+//connection to the db before test run
+before(function(done){
+    moongose.connect('mongodb://localhost/testaroo');
+
+    //once is something like on('click', ) in jquery
+    moongose.connection.once('open', function(){
+        console.log('connection has been made...');
+        done();
+    }).on('error', function(error){
+        console.log('connection error:', error);
+    });
+});
