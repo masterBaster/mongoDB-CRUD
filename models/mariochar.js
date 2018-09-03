@@ -7,5 +7,6 @@ let MarioCharSchema = new Schema({
 });
 
 let MarioChar = moongose.model('mariochar', MarioCharSchema);
+//mariochar is the name of collections
 
 module.exports = MarioChar;
