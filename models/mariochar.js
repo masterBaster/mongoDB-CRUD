@@ -8,7 +8,6 @@ let MarioCharSchema = new Schema({
 });
 
 let MarioChar = moongose.model('mariochar', MarioCharSchema);
-let LuigiChar = moongose.model('luigichar', MarioCharSchema);
 //mariochar is the name of collections
 
 module.exports = MarioChar;

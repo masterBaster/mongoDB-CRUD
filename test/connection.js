@@ -15,3 +15,11 @@ before(function(done){
         console.log('connection error:', error);
     });
 });
+   
+    //this code run inside here before every single test
+    //drop the characters collections before each test
+beforeEach(function(done){
+    moongose.connection.collections.mariochars.drop(function(){
+        done();
+    })
+})
