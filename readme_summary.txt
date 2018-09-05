@@ -15,3 +15,14 @@ in that collection);
     -findOne (criteria) find the first one with the name of Mario;
 7. the find method are on the models...
     -MarioChar.find({name: 'Mario'})
+
+8. focus on 3 moongose method
+    -char.remove() refers to single instance of the model, record;
+    -MarioChar.remove() refers to whole MarioChar collection (criteria 'Mario');
+    -MarioChar.findOneAndRemove() refers to first one witch matech our criteria and remove just that one;
+
+8.1 the process;
+    - create and save new record to the db;
+    - use findOneAndRemove() to remove record;
+    - try to findOne in the db (the one we just removed);
+    - assert that the result is null;
