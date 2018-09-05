@@ -10,6 +10,7 @@ in that collection);
         -myChar.save();
 
 5. drop the collection from the db;
+
 6. focus on 2 mongoose methods:
     -find (criteria) find all of records with the name of Mario;
     -findOne (criteria) find the first one with the name of Mario;
@@ -21,8 +22,20 @@ in that collection);
     -MarioChar.remove() refers to whole MarioChar collection (criteria 'Mario');
     -MarioChar.findOneAndRemove() refers to first one witch matech our criteria and remove just that one;
 
-8.1 the process;
+8.1 the process:
     - create and save new record to the db;
     - use findOneAndRemove() to remove record;
     - try to findOne in the db (the one we just removed);
     - assert that the result is null;
+
+9. various mongoose method:
+    -char.update();
+    -MarioChar.update();
+    -MarioChar.findOneAndUpdate();
+
+9.1 the process:
+    - create and save new record to the db;
+    - use findOneAndUpdate() to update the name of a record;
+    - try to findOne in the db (the one we just updated);
+    - assert that the result has the updated property value;
+
