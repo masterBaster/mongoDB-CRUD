@@ -5,7 +5,11 @@ let Author = require('../models/author');
 //describe our test
 describe('nesting records', function(){
 
-
+    beforeEach(function(done){
+        mongoose.connection.collection.authors.drop(function(){
+            done();
+        });
+    });
 
     
     it('creates an authors with sub-dokuments', function(done){
