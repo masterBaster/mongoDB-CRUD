@@ -1,5 +1,6 @@
 let assert = require('assert');
-let MarioChar = require('../models/mariochar')
+let MarioChar = require('../models/mariochar');
+let Customer = require('../models/customer');
 
 describe('deleting records', function(){
 
@@ -24,7 +25,26 @@ describe('deleting records', function(){
             });
         });
     });
-
-
 });
+
+describe('deleting customers', function(){
+    let customer;
+    beforeEach(function(done){
+        customer = new Customer({
+            first_name: 'Joe',
+            last_name: 'Davis'
+        });
+        customer.save().then(function(){
+            done();
+        })
+    })
+    it('deletes one customer from the db', function(done){
+        Customer.findOneAndRemove({first_name: 'Joe'}).then(function(){
+            Customer.findOne({first_name: 'Joe'}).then(function(record){
+                assert(record === null);
+                done();
+            })
+        })
+    })
+})
 

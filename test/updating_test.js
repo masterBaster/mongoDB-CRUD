@@ -1,5 +1,6 @@
 let assert = require('assert');
-let MarioChar = require('../models/mariochar')
+let MarioChar = require('../models/mariochar');
+let Customer = require('../models/customer');
 
 describe('updating records', function(){
 
@@ -33,4 +34,25 @@ describe('updating records', function(){
         });
     });
 });
+
+describe('updating customer', function(){
+    let customer;
+    beforeEach(function(done){
+        customer = new Customer({
+            first_name: 'Anna',
+            last_name: 'Grun'
+        })
+        customer.save().then(function(){
+            done();
+        })
+    })
+    it('upadating one customer to the db', function(done){
+        Customer.findOneAndUpdate({first_name: 'Anna'}, {last_name: 'White'}).then(function(){
+            Customer.findOne({_id: customer._id}).then(function(result){
+                assert(result.first_name === 'Anna')
+                done()
+            })
+        })
+    })
+})
 
